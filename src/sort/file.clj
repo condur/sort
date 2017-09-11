@@ -27,7 +27,10 @@
   "Write data in a form of a collection to a file, one by one, removing all existed content."
   [path coll]
   (clean path)
-  (for [x coll] (append-to path x)))
+  (with-open [wrtr (io/writer path :append true)]
+    (doall (for [x coll] (.write wrtr x)))
+    (.close wrtr)))
+
 
 (defn read-data
   "Read data from a file containing text format.

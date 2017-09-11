@@ -55,4 +55,4 @@
         formated-result (format-match result)]
     (file/save-coll-to path formated-result)
     (printf "Match is done. Please check the result in %s" path)
-    (println "")))
+    (println)))
