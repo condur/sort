@@ -26,3 +26,13 @@
                 (get-env :directories)))
 
   identity)
+
+;;Load the main namespace that is needed for "run" task
+(require '[sort.core :refer :all])
+
+(deftask run
+  "Profile setup for running the project from command line ... boot run"
+  []
+  ;; Run the main method from sort.core
+  (with-pass-thru _
+    (sort.core/-main)))

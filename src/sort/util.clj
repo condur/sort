@@ -3,21 +3,6 @@
    [sort.transducers :as transducers]
    [clojure.java.io :as io]))
 
-
-(defn read-data
-  "Read data from a file containing text format.
-   Parse line by line data using the provided parse funtion.
-   Return 'nil' if file does not exists."
-  [path parse-fn]
-  (when (.exists (io/file path))
-    (with-open [reader (io/reader path)]
-      (persistent!
-        (reduce
-          (fn [lines line] (conj! lines (parse-fn line)))
-          (transient [])
-          (line-seq reader))))))
-
-
 (defn strip
   "Strip a set of characters from a string"
   [coll chars]

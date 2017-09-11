@@ -1,9 +1,11 @@
 (ns sort.data
   (:require
-   [sort.util :refer [select-values read-data]]
+   [sort.util :refer [select-values]]
    [clojure.string :refer [split]]
    [cheshire.core :as json]
-   [clojure.spec.alpha :as spec]))
+   [clojure.spec.alpha :as spec]
+   [sort.file :as file]
+   [sort.spec :refer :all]))
 
 (defn parse-product
   "Parse raw products data. Validate against :sort.spec/product spec.
@@ -32,18 +34,10 @@
         samples-values (->> raw-values (mapcat #(split % #"\s+")) (into #{}))]
     (assoc m :samples samples-values)))
 
-; (def products
-;   (read-data "resources/products.txt" parse-product))
-;
-; (def listings
-;   (read-data "resources/listings.txt" parse-listing))
-
-
 (def products
-  (let [raw-products (read-data "resources/products.txt" parse-product)]
+  (let [raw-products (file/read-data "resources/products.txt" parse-product)]
     (map #(add-samples % [:model :family]) raw-products)))
-    ; (map #(add-samples % [:manufacture :model :family]) raw-products)))
 
 (def listings
-  (let [raw-listings (read-data "resources/listings.txt" parse-listing)]
+  (let [raw-listings (file/read-data "resources/listings.txt" parse-listing)]
     (map #(add-samples % [:title]) raw-listings)))
