@@ -2,12 +2,14 @@
   (:require
     [clojure.java.io :as io]))
 
+
 (defn clean
   "Remove the content of the file."
   [path]
   (with-open [wrtr (io/writer path)]
     (.write wrtr "")
     (.close wrtr)))
+
 
 (defn append-to
   "Append data to a file."
@@ -16,12 +18,14 @@
     (.write wrtr data)
     (.close wrtr)))
 
+
 (defn save-to
   "Write data to a file, removing all existed content."
   [path data]
   (with-open [wrtr (io/writer path :append false)]
     (.write wrtr data)
     (.close wrtr)))
+
 
 (defn save-coll-to
   "Write data in a form of a collection to a file, one by one, removing all existed content."

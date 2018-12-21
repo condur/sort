@@ -4,6 +4,7 @@
    [sort.data :refer [parse-product parse-listing]]
    [sort.file :as file]))
 
+
 (deftest load_json_lines
 
   (testing "load and parse JSON lines from resources/products file"

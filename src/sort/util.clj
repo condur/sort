@@ -3,6 +3,7 @@
    [sort.transducers :as transducers]
    [clojure.java.io :as io]))
 
+
 (defn strip
   "Strip a set of characters from a string"
   [coll chars]

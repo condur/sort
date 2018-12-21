@@ -10,6 +10,7 @@
     [sort.transducers :as transducers]
     [clojure.set :refer [intersection]]))
 
+
 (defn products-by-manufacturers
   "Group products by manufacturer."
   [products]
@@ -17,12 +18,14 @@
     (fn [product] (lower-case (:manufacturer product)))
     products))
 
+
 (defn get-manufacturer
   "Convert listing manufacturer into a collectiong/set of words."
   [listing]
   (->> (select-values listing [:manufacturer])
        (mapcat #(split % #"\s+"))
        (into #{})))
+
 
 (defn match
   "Match products and listings."

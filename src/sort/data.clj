@@ -7,6 +7,7 @@
    [sort.file :as file]
    [sort.spec :refer :all]))
 
+
 (defn parse-product
   "Parse raw products data. Validate against :sort.spec/product spec.
    Throw a spec explain exception in case that validation fail."
@@ -15,6 +16,7 @@
        (if (spec/valid? :sort.spec/product product)
           product
           (throw (Exception. (spec/explain :sort.spec/product product))))))
+
 
 (defn parse-listing
   "Parse raw listing data. Validate against :sort.spec/listing spec.
@@ -25,7 +27,9 @@
           listing
           (throw (Exception. (spec/explain :sort.spec/listing listing))))))
 
+
 (def strip-characters "(),.")
+
 
 (defn- add-samples
   "Add samples to a hash-map based on specified keys values"
@@ -34,9 +38,11 @@
         samples-values (->> raw-values (mapcat #(split % #"\s+")) (into #{}))]
     (assoc m :samples samples-values)))
 
+
 (def products
   (let [raw-products (file/read-data "resources/products.txt" parse-product)]
     (map #(add-samples % [:model :family]) raw-products)))
+
 
 (def listings
   (let [raw-listings (file/read-data "resources/listings.txt" parse-listing)]

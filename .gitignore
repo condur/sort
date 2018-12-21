@@ -13,3 +13,4 @@ pom.xml.asc
 tags
 .nrepl*
 .DS_Store
+.idea/

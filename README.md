@@ -59,12 +59,18 @@ A file full of Result objects is what your solution will be generating. A Result
 
 ### Run the application
 
-The projec is configured to run using boot-clj: https://github.com/boot-clj/boot and is using the alpha version of Clojure: 1.9.0-alpha20. Please make sure the set in your $HOME/.boot/boot.properties file the same Clojure version.
+The projec is configured to run using boot-clj: https://github.com/boot-clj/boot and is using the alpha version of Clojure: 1.10.0. Please make sure the set in your $HOME/.boot/boot.properties file the same Clojure version.
 
 To run the project excute in the command line:
 
 ```
 boot run
+```
+
+To have the autotest run in the command line:
+
+```
+boot watch bat-test
 ```
 
 ### Project structure
@@ -74,4 +80,4 @@ boot run
 * data - logic of reading and validating the input data: products and listings from resource folder
 * similarity - logic used to find the best match between various listing and products
 * file - logic related to read and write to files
-* transducers and util - a collection of helper functions 
+* transducers and util - a collection of helper functions

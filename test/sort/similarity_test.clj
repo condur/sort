@@ -31,6 +31,8 @@
                 :price "210.00",
                 :samples #{"Samsung" "compact" "14.2" "microSD," "Mpix" "-" "x" "Digital" "camera" "7"
                            "supported" "optical" "zoom:" "memory:" "TL240" "black" "microSDHC"}}]
+
+
  (deftest best_similarity
-   (testing "similarity"
-     (is (not= nil (similarity/jaccard listing products))))))
+  (testing "similarity"
+   (is (not= nil (similarity/jaccard listing products))))))
